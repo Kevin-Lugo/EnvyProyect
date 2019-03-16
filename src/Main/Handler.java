@@ -40,8 +40,8 @@ public class Handler {
 		//height =( DEFAULTHEIGHT/1080)*1080;
 		//width = (DEFAULTWIDTH/1920)*1920;
 		
-		height = DEFAULTHEIGHT;
-		width = DEFAULTWIDTH;
+		height = DEFAULTHEIGHT - 100;
+		width = DEFAULTWIDTH - 50 ;
 
 	}
 
