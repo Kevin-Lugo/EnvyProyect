@@ -144,6 +144,14 @@ public class Player extends BaseDynamicEntity implements Fighter {
 			}else{
 				speed = 8;
 			}
+		
+		// turns on debug mode
+			if(handler.getKeyManager().debug)
+			handler.getGame().DEBUGMODE = !handler.getGame().DEBUGMODE;
+		// sets heath and to full
+			if(handler.getKeyManager().debugAbility)
+				this.health = this.getMaxHealth();
+				this.mana = this.maxMana;
 		}
 
 		CheckForWalls();
