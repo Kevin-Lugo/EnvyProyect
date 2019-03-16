@@ -1,9 +1,12 @@
 package Game.Entities.Dynamics;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
+import Game.Entities.Statics.EntranceEntity;
 import Game.GameStates.InWorldState;
 import Game.GameStates.State;
 import Game.World.Walls;
@@ -20,6 +23,7 @@ import java.awt.image.BufferedImage;
 public class Player extends BaseDynamicEntity implements Fighter {
 
 	private Rectangle player;
+
 	private boolean canMove;
 	public static boolean checkInWorld;
 
@@ -32,6 +36,7 @@ public class Player extends BaseDynamicEntity implements Fighter {
 	public static boolean isinArea = false;
 	private boolean weakenS = false;
 	private int switchingCoolDown = 0;
+	private boolean thanosCollision = false;
 
 	// Animations
 	private Animation animDown, animUp, animLeft, animRight;
@@ -93,6 +98,9 @@ public class Player extends BaseDynamicEntity implements Fighter {
 	@Override
 	public void render(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
+		Graphics2D g3 = (Graphics2D) g;
+		
+		String thanosMessage = "You cannot enter the cave unless you have an ability! Go to the town and fight Bad Bunny";
 
 		g.drawImage(
 				getCurrentAnimationFrame(animDown, animUp, animLeft, animRight, Images.player_front, Images.player_back,
@@ -105,7 +113,17 @@ public class Player extends BaseDynamicEntity implements Fighter {
 			g2.draw(nextArea);
 			g2.draw(getCollision());
 		}
+
+		if(handler.getKeyManager().attbut  && this.thanosCollision) {
+			g3.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+			g3.setColor(Color.WHITE);
+			g3.drawString(thanosMessage, 100, 100);
+			
+		}
+			
 	}
+	
+	
 
 	private void UpdateNextMove() {
 		switch (facing) {
@@ -156,6 +174,8 @@ public class Player extends BaseDynamicEntity implements Fighter {
 		}
 
 		CheckForWalls();
+		//worldWalls.add(new Walls(handler, 1662, 55, 50, 50, "Door Cave"));
+		
 
 		if (handler.getKeyManager().down & canMove) {
 			Move(false, -speed);
@@ -200,6 +220,17 @@ public class Player extends BaseDynamicEntity implements Fighter {
 			for (Walls w : handler.getWorldManager().getWalls()) {
 
 				if (nextArea.intersects(w)) {
+					
+					
+					if( w.getType().equals("ThanosWall") && handler.getEntityManager().getPlayer().getSkill().contentEquals("none")) {
+						
+						PushPlayerBack();
+						this.thanosCollision = true;
+					}
+					else {
+						this.thanosCollision = false;
+					}
+					
 
 					if (w.getType().equals("Wall")) {
 						PushPlayerBack();
@@ -208,7 +239,7 @@ public class Player extends BaseDynamicEntity implements Fighter {
 					else if (w.getType().startsWith("Door")) {
 						canMove = true;
 
-						if (w.getType().equals("Door Cave")) {
+						if (w.getType().equals("Door Cave") ) {
 							checkInWorld = true;
 							InWorldState.caveArea.oldPlayerXCoord = (int) (handler.getXDisplacement());
 							InWorldState.caveArea.oldPlayerYCoord = (int) (handler.getYDisplacement());
@@ -224,7 +255,8 @@ public class Player extends BaseDynamicEntity implements Fighter {
 	                        handler.getGame().getMusicHandler().setVolume(0.4);
 							
 							State.setState(handler.getGame().inWorldState.setArea(InWorldState.caveArea));
-						}
+						} 
+							
 
 						if (w.getType().equals("Door S")) {
 							checkInWorld = true;
