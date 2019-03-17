@@ -11,6 +11,7 @@ import Game.GameStates.InWorldState;
 import Game.GameStates.State;
 import Game.World.Walls;
 import Game.World.InWorldAreas.CaveArea;
+import Game.World.InWorldAreas.TownArea;
 import Game.World.InWorldAreas.InWorldWalls;
 import Main.GameSetUp;
 import Main.Handler;
@@ -91,6 +92,10 @@ public class Player extends BaseDynamicEntity implements Fighter {
 				checkInWorld = false;
 			}
 
+		}
+		if(TownArea.isInTown ) {
+			setWidthAndHeight(this.currentWidth, this.currentHeight);
+			
 		}
 	}
 
@@ -244,6 +249,7 @@ public class Player extends BaseDynamicEntity implements Fighter {
 							InWorldState.caveArea.oldPlayerXCoord = (int) (handler.getXDisplacement());
 							InWorldState.caveArea.oldPlayerYCoord = (int) (handler.getYDisplacement());
 							CaveArea.isInCave = true;
+							
 							setWidthAndHeight(InAreaWidthFrontAndBack, InAreaHeightFront);
 							handler.setXInWorldDisplacement(CaveArea.playerXSpawn);
 							handler.setYInWorldDisplacement(CaveArea.playerYSpawn);
@@ -256,6 +262,25 @@ public class Player extends BaseDynamicEntity implements Fighter {
 							
 							State.setState(handler.getGame().inWorldState.setArea(InWorldState.caveArea));
 						} 
+						if(w.getType().equals("Door Town")) {
+							
+						checkInWorld = true;
+						InWorldState.townArea.oldPlayerXCoord = (int) (handler.getXDisplacement());
+						InWorldState.townArea.oldPlayerYCoord = (int) (handler.getYDisplacement());
+					    TownArea.isInTown = true;
+					    setWidthAndHeight(InAreaWidthFrontAndBack, InAreaHeightFront);
+							handler.setXInWorldDisplacement(TownArea.playerXSpawn);
+							handler.setYInWorldDisplacement(TownArea.playerYSpawn);
+							GameSetUp.LOADING = true;
+							handler.setArea("Town");
+//						
+//	                        handler.getGame().getMusicHandler().set_changeMusic("res/music/Cave.mp3");
+//	                        handler.getGame().getMusicHandler().play();
+//	                        handler.getGame().getMusicHandler().setVolume(0.4);
+							State.setState(handler.getGame().inWorldState.setArea(InWorldState.townArea));
+//							
+							
+						}
 							
 
 						if (w.getType().equals("Door S")) {
@@ -310,6 +335,20 @@ public class Player extends BaseDynamicEntity implements Fighter {
 					}
 				}
 			}
+			else if(TownArea.isInTown) {
+				for(InWorldWalls w: TownArea.townWalls) {
+					if (nextArea.intersects(w)) {
+						if (w.getType().equals("Wall")) {
+							PushPlayerBack();
+					}
+					
+				}
+				}
+			}
+				
+				
+			
+			
 
 			else if (Player.isinArea) {
 

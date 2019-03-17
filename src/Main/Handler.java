@@ -20,7 +20,7 @@ public class Handler {
 	GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
 	int DEFAULTWIDTH = gd.getDisplayMode().getWidth();
 	int DEFAULTHEIGHT = gd.getDisplayMode().getHeight();
-
+ 
 	int width, height;
 
 	private EntityManager entityManager;
