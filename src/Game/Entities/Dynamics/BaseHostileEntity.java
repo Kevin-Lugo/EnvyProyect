@@ -59,6 +59,7 @@ public class BaseHostileEntity extends BaseDynamicEntity implements Fighter{
 	                }
 	
 	                PlayerDetector();
+	                
 	
 	                if (!chasingPlayer) {
 	                    Move();

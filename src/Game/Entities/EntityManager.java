@@ -71,7 +71,7 @@ public class EntityManager {
 			else {
 				e.render(g);
 			}
-		}
+		} 
 
 	}
 	

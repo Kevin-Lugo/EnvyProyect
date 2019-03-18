@@ -97,6 +97,7 @@ public class Player extends BaseDynamicEntity implements Fighter {
 			setWidthAndHeight(this.currentWidth, this.currentHeight);
 			
 		}
+		System.out.println( "X = " + player.getX() + "Y = " + player.getY());
 	}
 
 
@@ -344,8 +345,8 @@ public class Player extends BaseDynamicEntity implements Fighter {
 						else {
 							if (w.getType().equals("Start Town Exit")){
 
-								handler.setXDisplacement(InWorldState.caveArea.oldPlayerXCoord ); // Sets the player x/y
-								handler.setYDisplacement(InWorldState.caveArea.oldPlayerYCoord);
+								handler.setXDisplacement(InWorldState.townArea.oldPlayerXCoord); // Sets the player x/y
+								handler.setYDisplacement(InWorldState.townArea.oldPlayerYCoord);
 								
 							}
 							GameSetUp.LOADING = true;

@@ -38,7 +38,7 @@ public class TownArea extends BaseArea {
 	        this.entityManager = entityManager;
 
 	        
-
+	        this.entityManager.AddEntity(handler.newVillager(Images.PEnemyIdle, handler, 2500, 100, "InWorldState", "Villager", "Town", "Villagers"));
 //	        this.entityManager.AddEntity(handler.newEnemy(Images.PEnemyIdle,handler,700, 2000,"InWorldState","Sergio","Cave","EnemyOne",150,25,80,1,8,12,20,10,20,10,1,10,"None","Thunder",null,null)); //lvl 2 difficulty
 //	        this.entityManager.AddEntity(handler.newEnemy(Images.PEnemyIdle,handler,3000, 1000,"InWorldState","Cave Dweller","Cave","EnemyOne",100,25,60,10,1,12,20,10,20,13,1,10,"None","Thunder",null,null)); // lvl 1 difficulty
 
@@ -81,7 +81,7 @@ public class TownArea extends BaseArea {
 	                else
 	                    g2.setColor(Color.PINK);
 
-	                w.render(g2);
+	                w.render(g2); 
 	            }
 	        }
 

@@ -2,6 +2,7 @@ package Main;
 
 import Game.Entities.Dynamics.BaseHostileEntity;
 import Game.Entities.Dynamics.EnemyOne;
+import Game.Entities.Dynamics.Villagers;
 import Input.KeyManager;
 import Input.MouseManager;
 
@@ -177,4 +178,12 @@ public class Handler {
 
 
 	}
+	public BaseHostileEntity newVillager(BufferedImage[] images,Handler handler, int xPosition, int yPosition, String state, String name, String area,
+									  String typeOfEnemy)  {
+			Villagers i = new Villagers( handler,  xPosition,  yPosition,  state,  name,  area, images );
+			return i;
+		
+	}
 }
+		
+		
