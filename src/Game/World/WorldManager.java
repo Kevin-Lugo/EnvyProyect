@@ -81,7 +81,7 @@ public class WorldManager {
 			for (Walls w: this.worldWalls) {
 
 				if (w.getType().equals("Wall"))
-					g2.setColor(Color.black);
+					g2.setColor(Color.black); 
 				else
 					g2.setColor(Color.PINK);
 
@@ -139,6 +139,8 @@ public class WorldManager {
 		worldWalls.add(new Walls(handler, 1662, 55, 50, 50, "Door Cave"));
 		worldWalls.add(new Walls(handler, (int) circle.getXOffset(),(int) 
 				circle.getYOffset(), 20, 20, "Door S"));	
+//		worldWalls.add(new Walls(handler, (int) circle.getXOffset(),(int) 
+//				circle.getYOffset(), 20, 20, "Wall"));	
 
 		///Left Mountains
 		worldWalls.add(new Walls(handler, 700, 180, 140, 200, "Wall"));

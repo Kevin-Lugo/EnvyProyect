@@ -341,6 +341,27 @@ public class Player extends BaseDynamicEntity implements Fighter {
 						if (w.getType().equals("Wall")) {
 							PushPlayerBack();
 					}
+						else {
+							if (w.getType().equals("Start Town Exit")){
+
+								handler.setXDisplacement(InWorldState.caveArea.oldPlayerXCoord ); // Sets the player x/y
+								handler.setYDisplacement(InWorldState.caveArea.oldPlayerYCoord);
+								
+							}
+							GameSetUp.LOADING = true;
+							handler.setArea("None");
+							
+	                    	handler.getGame().getMusicHandler().set_changeMusic("res/music/OverWorld.mp3");
+	                        handler.getGame().getMusicHandler().play();
+	                        handler.getGame().getMusicHandler().setVolume(0.2);
+							
+							State.setState(handler.getGame().mapState);
+							TownArea.isInTown = false;
+							checkInWorld = false;
+							System.out.println("Left Town");
+							setWidthAndHeight(InMapWidthFrontAndBack, InMapHeightFront);
+							
+						}
 					
 				}
 				}
