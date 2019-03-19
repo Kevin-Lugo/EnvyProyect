@@ -26,6 +26,7 @@ public class BaseNonHostileEntity extends BaseDynamicEntity {
 	public String name="friendly";
 	public String Area;//None for MapState
     public String type;//class it is ex: "EnemyOne"
+   
     
     public BaseNonHostileEntity(Handler handler, int xPosition, int yPosition, String state,String name,String area, BufferedImage[] animFrames) {
 		super(handler, xPosition, yPosition,animFrames);
@@ -39,6 +40,7 @@ public class BaseNonHostileEntity extends BaseDynamicEntity {
 		rand = new Random();
 		detector = new Rectangle();
 		BeingTalkedTo = false;
+		
 		  }
     
 

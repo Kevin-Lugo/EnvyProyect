@@ -24,6 +24,7 @@ import java.awt.image.BufferedImage;
 public class Player extends BaseDynamicEntity implements Fighter {
 
 	private Rectangle player;
+	public boolean QuestFinished = false;
 
 	private boolean canMove;
 	public static boolean checkInWorld;
@@ -76,7 +77,7 @@ public class Player extends BaseDynamicEntity implements Fighter {
 
 			UpdateNextMove();
 			PlayerInput();
-
+			
 			if (GameSetUp.SWITCHING) {
 				switchingCoolDown++;
 			}

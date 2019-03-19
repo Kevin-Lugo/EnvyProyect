@@ -1,6 +1,7 @@
 package Game.GameStates;
 
 import Game.Entities.Dynamics.BaseHostileEntity;
+import Game.Entities.Dynamics.BaseNonHostileEntity;
 import Game.Entities.Dynamics.Player;
 import Main.GameSetUp;
 import Main.Handler;
@@ -57,6 +58,8 @@ public class FightState extends InWorldState{
     private String prevState;
 
     private BaseHostileEntity inStateEnemy;
+    private BaseNonHostileEntity Quest;
+    
 	private long eWait = 0;
 
 
@@ -75,6 +78,8 @@ public class FightState extends InWorldState{
         handler.getGame().getMusicHandler().setVolume(0.2);
 
         inStateEnemy=enemy;
+        
+       
 
         this.enemy = (handler.newEnemy(enemy.frames,handler,handler.getWidth() * 4/ 5, entityY,enemy.foundState,enemy.name,enemy.Area,
                 enemy.type,enemy.getHealth(),enemy.getMana(),enemy.getXp(),enemy.getLvl(),enemy.getStr(),enemy.getDefense(),
@@ -134,6 +139,11 @@ public class FightState extends InWorldState{
         else {
             if(!attacking&&!defense&&!skill&&turn>0&&enemy.getHealth()<=0&&!battleOver){
                 battleOver=true;
+                // Checking if the quest of killing the boss is completed
+                if (enemy.name.equals("Boss") ) {
+                	handler.getEntityManager().getPlayer().QuestFinished = true;
+            	   
+               }
                 
                 handler.getGame().getMusicHandler().stop();
                 handler.getGame().getMusicHandler().playEffect("res/music/victory.mp3",0);

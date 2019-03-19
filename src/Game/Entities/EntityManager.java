@@ -14,6 +14,7 @@ public class EntityManager {
 	protected Handler handler;
 	protected Player player;
 	
+	
 	ArrayList<BaseEntity> entities;
 	
 	public EntityManager(Handler handler, Player player) {
@@ -84,6 +85,7 @@ public class EntityManager {
 	public void RemoveEntity(BaseEntity e) {
 		entities.remove(e);
 	}
+
 
 	public Player getPlayer() {
 		return player;
