@@ -140,7 +140,7 @@ public class FightState extends InWorldState{
             if(!attacking&&!defense&&!skill&&turn>0&&enemy.getHealth()<=0&&!battleOver){
                 battleOver=true;
                 // Checking if the quest of killing the boss is completed
-                if (enemy.name.equals("Boss") ) {
+                if (enemy.name.equals("Boss") && handler.getEntityManager().getPlayer().QuestAssigned) {
                 	handler.getEntityManager().getPlayer().QuestFinished = true;
             	   
                }

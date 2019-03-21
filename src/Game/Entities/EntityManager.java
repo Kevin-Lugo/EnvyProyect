@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import Game.Entities.Dynamics.BaseHostileEntity;
 import Game.Entities.Dynamics.Player;
 import Game.Entities.Statics.BaseStaticEntity;
+import Game.Entities.Statics.EntranceEntity;
 import Main.GameSetUp;
 import Main.Handler;
 
@@ -37,6 +38,13 @@ public class EntityManager {
 			}else {
 				CheckCollisions(e);
 				e.tick();
+			}
+		}
+		
+		for (BaseEntity k : entities) {
+			
+			if(k instanceof EntranceEntity && player.getCanEnterCave() ){
+				k.setXOffset(1600);
 			}
 		}
 		

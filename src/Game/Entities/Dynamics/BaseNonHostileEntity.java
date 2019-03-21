@@ -65,8 +65,9 @@ public class BaseNonHostileEntity extends BaseDynamicEntity {
 	                if(PlayerDetected ) {
 	                	
 	                	if( handler.getKeyManager().attbut) {
-	                
+	                		
 	                	this.BeingTalkedTo = true;
+	                	handler.getEntityManager().getPlayer().QuestAssigned = true;
 	                	
 	                }else
 	                	this.BeingTalkedTo = false;

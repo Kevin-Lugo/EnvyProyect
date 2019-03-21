@@ -58,6 +58,9 @@ public class WorldManager {
 		this.animation.tick();
 		this.collidedWithWall();
 		this.moveString();
+		
+		
+	
 
 	}
 

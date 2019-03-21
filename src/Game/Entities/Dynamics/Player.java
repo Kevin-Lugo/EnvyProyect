@@ -24,7 +24,8 @@ import java.awt.image.BufferedImage;
 public class Player extends BaseDynamicEntity implements Fighter {
 
 	private Rectangle player;
-	public boolean QuestFinished = false;
+	public boolean QuestFinished = false; 
+	public boolean QuestAssigned = false;
 
 	private boolean canMove;
 	public static boolean checkInWorld;
@@ -38,7 +39,8 @@ public class Player extends BaseDynamicEntity implements Fighter {
 	public static boolean isinArea = false;
 	private boolean weakenS = false;
 	private int switchingCoolDown = 0;
-	private boolean thanosCollision = false;
+	private boolean CanEnterCave = false;
+	private boolean CollisionWithEntity=false;
 
 	// Animations
 	private Animation animDown, animUp, animLeft, animRight;
@@ -121,10 +123,11 @@ public class Player extends BaseDynamicEntity implements Fighter {
 			g2.draw(getCollision());
 		}
 
-		if(handler.getKeyManager().attbut  && this.thanosCollision) {
+		if(handler.getKeyManager().attbut  && this.CollisionWithEntity) {
 			g3.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 			g3.setColor(Color.WHITE);
 			g3.drawString(thanosMessage, 100, 100);
+		
 			
 		}
 			
@@ -228,15 +231,22 @@ public class Player extends BaseDynamicEntity implements Fighter {
 
 				if (nextArea.intersects(w)) {
 					
-					
-					if( w.getType().equals("ThanosWall") && handler.getEntityManager().getPlayer().getSkill().contentEquals("none")) {
-						
-						PushPlayerBack();
-						this.thanosCollision = true;
-					}
-					else {
-						this.thanosCollision = false;
-					}
+					if (w.getType().equals("ThanosWall")) {
+						this.CollisionWithEntity = true;
+
+						if (handler.getEntityManager().getPlayer().getSkill().contentEquals("none")) {
+
+							PushPlayerBack();
+							this.CanEnterCave = false;
+
+						} else if (!handler.getEntityManager().getPlayer().getSkill().contentEquals("none")
+								&& handler.getKeyManager().attbut) {
+							this.CanEnterCave = true;
+
+						}
+					} 
+					if (!w.getType().equals("ThanosWall"))
+						this.CollisionWithEntity = false;
 					
 
 					if (w.getType().equals("Wall")) {
@@ -429,6 +439,10 @@ public class Player extends BaseDynamicEntity implements Fighter {
 	@Override
 	public Rectangle getCollision() {
 		return player;
+	}
+	
+	public boolean getCanEnterCave() {
+		return this.CanEnterCave;
 	}
 
 	/**
