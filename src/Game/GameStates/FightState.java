@@ -58,7 +58,7 @@ public class FightState extends InWorldState{
     private String prevState;
 
     private BaseHostileEntity inStateEnemy;
-    private BaseNonHostileEntity Quest;
+   
     
 	private long eWait = 0;
 
@@ -270,12 +270,14 @@ public class FightState extends InWorldState{
                     }else{
                     	// cave music
                         handler.setArea(InWorldState.currentArea.name);
+                        handler.setXInWorldDisplacement(-1950);
+                        handler.setYInWorldDisplacement(-1000);
                         
                         handler.getGame().getMusicHandler().set_changeMusic("res/music/Cave.mp3");
                         handler.getGame().getMusicHandler().play();
                         handler.getGame().getMusicHandler().setVolume(0.4);
-                        
-                        State.setState(handler.getGame().inWorldState);
+                        State.setState(handler.getGame().inWorldState); 
+                       
                     }
                 }
             }
