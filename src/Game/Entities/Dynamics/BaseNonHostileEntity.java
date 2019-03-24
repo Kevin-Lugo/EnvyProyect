@@ -62,16 +62,8 @@ public class BaseNonHostileEntity extends BaseDynamicEntity {
 	                }
 	
 	                PlayerDetector();
-	                if(PlayerDetected ) {
-	                	
-	                	if( handler.getKeyManager().attbut) {
-	                		
-	                	this.BeingTalkedTo = true;
-	                	handler.getEntityManager().getPlayer().QuestAssigned = true;
-	                	
-	                }else
-	                	this.BeingTalkedTo = false;
-	                }
+	                getBeingTalkedTo();
+	               
 	                	Move();
 	               
 	            }
@@ -207,27 +199,6 @@ public class BaseNonHostileEntity extends BaseDynamicEntity {
 
 	}
 
-//	protected void Chase() {
-//		if (this.handler.getEntityManager().getPlayer().getXOffset()+(handler.getEntityManager().getPlayer().getCollision().width/2) > this.getXOffset() && canMove) {
-//			facing = "Right";
-//			this.setXOffset(this.getXOffset() + chaseSpeed);
-//		}
-//		if (this.handler.getEntityManager().getPlayer().getXOffset()+(handler.getEntityManager().getPlayer().getCollision().width/2) < this.getXOffset() && canMove) {
-//			facing = "Left";
-//			this.setXOffset(this.getXOffset() - chaseSpeed);
-//		}
-//
-//		if (this.handler.getEntityManager().getPlayer().getYOffset()+(handler.getEntityManager().getPlayer().getCollision().height) < this.getYOffset() && canMove) {
-//			facing = "Up";
-//			this.setYOffset(this.getYOffset() - chaseSpeed);
-//		}
-//
-//		if (this.handler.getEntityManager().getPlayer().getYOffset()+(handler.getEntityManager().getPlayer().getCollision().height) > this.getYOffset() && canMove) {
-//			facing = "Down";
-//			this.setYOffset(this.getYOffset() + chaseSpeed);
-//		}
-//
-//	}
 
 	private void Move() {
 
@@ -256,6 +227,16 @@ public class BaseNonHostileEntity extends BaseDynamicEntity {
 		}
 	}
 	public boolean getBeingTalkedTo() {
+		 if(PlayerDetected ) {
+         	
+         	if( handler.getKeyManager().attbut) {
+         		
+         	this.BeingTalkedTo = true;
+         	handler.getEntityManager().getPlayer().QuestAssigned = true;
+         	
+         }else
+         	this.BeingTalkedTo = false;
+         }
 		return this.BeingTalkedTo;
 	}
     

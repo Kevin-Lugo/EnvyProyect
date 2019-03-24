@@ -88,6 +88,9 @@ public class FightState extends InWorldState{
 
         this.enemy.lvlAdjust();
         playerRect = new Rectangle( (int) handler.getWidth() / 5, entityY, 100, 100);
+        if(enemy.name.equals("Boss")) {
+        	enemyRect = new Rectangle((int) handler.getWidth() * 4/ 5 - 70,entityY -200, 300, 300);
+        }else
         enemyRect = new Rectangle((int) handler.getWidth() * 4/ 5 - 70,entityY, 70, 70);
 
         setUiManager();
@@ -529,6 +532,9 @@ public class FightState extends InWorldState{
             background = Images.battleBackground[1];
         else if (prev.equals("Cave"))
             background = Images.battleBackground[3];
+        else if( prev.equals("Town")) {
+        	background = Images.battleBackground[0];
+        }
 
 
     }
