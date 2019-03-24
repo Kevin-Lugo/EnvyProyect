@@ -40,13 +40,15 @@ public class EntityManager {
 				e.tick();
 			}
 		}
-		
+						// Makes it so that when the player interacts with the cave Guardian and has a skill it moves to the left
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////
 		for (BaseEntity k : entities) {
 			
-			if(k instanceof EntranceEntity && player.getCanEnterCave() ){
-				k.setXOffset(1600);
+			if(k instanceof EntranceEntity && player.getCanEnterCave()){
+				k.setXOffset(1550);
 			}
 		}
+		////////////////////////////////////////////////////////////////////////////////////////////////////////
 		
 		player.tick();
 		

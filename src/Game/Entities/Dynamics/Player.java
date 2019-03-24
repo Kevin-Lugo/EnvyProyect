@@ -97,10 +97,9 @@ public class Player extends BaseDynamicEntity implements Fighter {
 
 		}
 		if(TownArea.isInTown ) {
-			setWidthAndHeight(this.currentWidth, this.currentHeight);
-			
+			setWidthAndHeight(this.currentWidth, this.currentHeight);	
 		}
-		System.out.println( "X = " + player.getX() + "Y = " + player.getY());
+		
 	}
 
 
@@ -230,7 +229,8 @@ public class Player extends BaseDynamicEntity implements Fighter {
 			for (Walls w : handler.getWorldManager().getWalls()) {
 
 				if (nextArea.intersects(w)) {
-					
+					///////////////////////////////////////////////////////////////////////////////////////////////
+					// Makes it so that the player can or cannot enter to the cave
 					if (w.getType().equals("ThanosWall")) {
 						this.CollisionWithEntity = true;
 
@@ -238,6 +238,7 @@ public class Player extends BaseDynamicEntity implements Fighter {
 
 							PushPlayerBack();
 							this.CanEnterCave = false;
+							
 
 						} else if (!handler.getEntityManager().getPlayer().getSkill().contentEquals("none")
 								&& handler.getKeyManager().attbut) {
@@ -247,7 +248,7 @@ public class Player extends BaseDynamicEntity implements Fighter {
 					} 
 					if (!w.getType().equals("ThanosWall"))
 						this.CollisionWithEntity = false;
-					
+					////////////////////////////////////////////////////////////////////////////////////////////////////
 
 					if (w.getType().equals("Wall")) {
 						PushPlayerBack();
@@ -497,7 +498,7 @@ public class Player extends BaseDynamicEntity implements Fighter {
 	double health = 200, mana = 100, xp = 0, lvl = 1, defense = 16, str = 10, intl = 25, mr = 12, cons = 20, acc = 12, evs = 4,
 			initiative = 13, maxHealth = 200, maxMana = 100, lvlUpExp = 200;
 
-	String Class = "none", skill = "none";
+	String Class = "none", skill = "none1";
 	// skill = "Freeze";
 	String[] buffs = {}, debuffs = {};
 
