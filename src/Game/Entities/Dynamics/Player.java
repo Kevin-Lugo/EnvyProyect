@@ -22,10 +22,11 @@ import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
 public class Player extends BaseDynamicEntity implements Fighter {
-
+	
 	private Rectangle player;
 	public boolean QuestFinished = false; 
 	public boolean QuestAssigned = false;
+	public boolean caveGuardianMoved = false;
 
 	private boolean canMove;
 	public static boolean checkInWorld;
@@ -80,6 +81,8 @@ public class Player extends BaseDynamicEntity implements Fighter {
 			UpdateNextMove();
 			PlayerInput();
 			
+			
+			
 			if (GameSetUp.SWITCHING) {
 				switchingCoolDown++;
 			}
@@ -121,13 +124,16 @@ public class Player extends BaseDynamicEntity implements Fighter {
 			g2.draw(nextArea);
 			g2.draw(getCollision());
 		}
-
-		if(handler.getKeyManager().attbut  && this.CollisionWithEntity) {
-			g3.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-			g3.setColor(Color.WHITE);
-			g3.drawString(thanosMessage, 100, 100);
 		
+		g3.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		g3.setColor(Color.WHITE);
+
+		if(handler.getKeyManager().attbut  && this.CollisionWithEntity && !caveGuardianMoved) {
 			
+			g3.drawString(thanosMessage, 100, 100);
+		}
+		else if (handler.getKeyManager().attbut  && this.CollisionWithEntity && caveGuardianMoved ) {
+			g3.drawString("Congratulations, You Can Enter the Cave!" , 100, 100);
 		}
 			
 	}
@@ -230,23 +236,17 @@ public class Player extends BaseDynamicEntity implements Fighter {
 
 				if (nextArea.intersects(w)) {
 					///////////////////////////////////////////////////////////////////////////////////////////////
-					// Makes it so that the player can or cannot enter to the cave
+			//		 Makes it so that the player can or cannot enter to the cave
 					if (w.getType().equals("ThanosWall")) {
 						this.CollisionWithEntity = true;
 
-						if (handler.getEntityManager().getPlayer().getSkill().contentEquals("none")) {
-
-							PushPlayerBack();
-							this.CanEnterCave = false;
-							
-
-						} else if (!handler.getEntityManager().getPlayer().getSkill().contentEquals("none")
-								&& handler.getKeyManager().attbut) {
-							this.CanEnterCave = true;
-
+						 if (!handler.getEntityManager().getPlayer().getSkill().contentEquals("none")
+								&& caveGuardianMoved) {
 						}
+						 else 
+							 PushPlayerBack();
 					} 
-					if (!w.getType().equals("ThanosWall"))
+					if (!w.getType().equals("ThanosWall")) 
 						this.CollisionWithEntity = false;
 					////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -498,7 +498,7 @@ public class Player extends BaseDynamicEntity implements Fighter {
 	double health = 200, mana = 100, xp = 0, lvl = 1, defense = 16, str = 10, intl = 25, mr = 12, cons = 20, acc = 12, evs = 4,
 			initiative = 13, maxHealth = 200, maxMana = 100, lvlUpExp = 200;
 
-	String Class = "none", skill = "none1";
+	String Class = "none", skill = "none";
 	// skill = "Freeze";
 	String[] buffs = {}, debuffs = {};
 

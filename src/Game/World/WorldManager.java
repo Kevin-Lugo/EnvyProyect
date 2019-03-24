@@ -151,7 +151,7 @@ public class WorldManager {
 		worldWalls.add(new Walls(handler, 840, 240, 120, 110, "Wall"));
 		worldWalls.add(new Walls(handler, 580, 300, 40, 50, "Wall"));
 		
-		// Thanos walls
+//		// Thanos walls
 		worldWalls.add(new Walls(handler, 1650, 100, 75, 10,"ThanosWall"));
 		worldWalls.add(new Walls(handler, 1650, 75, 10, 75,"ThanosWall"));
 		worldWalls.add(new Walls(handler, 1650, 150, 75, 10,"ThanosWall"));
