@@ -56,12 +56,11 @@ public class Villagers extends BaseNonHostileEntity{
 		if (handler.getArea().equals(this.Area)) {
 			if (!Player.checkInWorld) {
 				villager = new Rectangle((int) (handler.getXDisplacement() + getXOffset()),
-						(int) (handler.getYDisplacement() + getYOffset()), 45, 45);
+						(int) (handler.getYDisplacement() + getYOffset()), 200, 100);
 
 			} else {
 				villager = new Rectangle((int) (handler.getXInWorldDisplacement() + getXOffset()),
-						(int) (handler.getYInWorldDisplacement() + getYOffset()), 70, 70);
-
+						(int) (handler.getYInWorldDisplacement() + getYOffset()), 200, 200);
 			}
 
 			g2.setColor(Color.black);
