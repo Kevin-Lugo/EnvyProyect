@@ -14,9 +14,11 @@ import Main.GameSetUp;
 import Main.Handler;
 
 public class BaseNonHostileEntity extends BaseDynamicEntity {
+	
 	private Random rand;
 	private boolean PlayerDetected;
 	private Rectangle detector;
+	
 	private boolean BeingTalkedTo;
 	private int count;
 	private int directionMov;
