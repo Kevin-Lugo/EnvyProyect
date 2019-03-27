@@ -72,7 +72,7 @@ public class Villagers extends BaseNonHostileEntity{
 
 			if (super.getBeingTalkedTo()) {
 				if (handler.getEntityManager().getPlayer().QuestFinished) {
-					g3.drawString("You have completed the quest!", 500, 150);
+					g3.drawString("You have completed the quest!", 100, 160);
 
 				} else {
 					g3.drawString(this.VillagerMessage, 100, 160);

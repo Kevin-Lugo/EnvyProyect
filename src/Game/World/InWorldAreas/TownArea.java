@@ -39,7 +39,7 @@ public class TownArea extends BaseArea {
 
 	        
 	        this.entityManager.AddEntity(handler.newVillager(Images.PEnemyIdle, handler, 2500, 100, "InWorldState", "Villager", "Town", "Villagers"));	
-	        this.entityManager.AddEntity(handler.newEnemy(Images.EnemyS,handler,2500, 2000,"InWorldState","Lord Shaggy","Town","EnemyOne",30,100,100,3,8,15,30,10,20,10,1,10,"None","Thunder",null,null)); //lvl 3 difficulty
+	        this.entityManager.AddEntity(handler.newEnemy(Images.EnemyS,handler,2500, 2000,"InWorldState","Lord Shaggy","Town","EnemyOne",130,100,100,3,8,15,30,10,20,10,1,10,"None","Thunder",null,null)); //lvl 3 difficulty
 //	        this.entityManager.AddEntity(handler.newEnemy(Images.PEnemyIdle,handler,3000, 1000,"InWorldState","Cave Dweller","Cave","EnemyOne",100,25,60,10,1,12,20,10,20,13,1,10,"None","Thunder",null,null)); // lvl 1 difficulty
 
 //	        this.entityManager.AddEntity(new LightStatue (handler, 2080, 1770));

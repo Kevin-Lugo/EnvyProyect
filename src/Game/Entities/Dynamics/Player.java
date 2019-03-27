@@ -112,12 +112,15 @@ public class Player extends BaseDynamicEntity implements Fighter {
 		Graphics2D g2 = (Graphics2D) g;
 		Graphics2D g3 = (Graphics2D) g;
 
-		g2.setColor(Color.WHITE);
-		g2.fillRect(80, 70, 470, 110);
-		g2.setColor(Color.BLACK);
+		Color bColor = Color.decode("#1A4E4E");
+		
+		g2.setColor(Color.LIGHT_GRAY);
+		g2.fillRect(82, 72, 465, 105);
+		g2.setColor(bColor);
 		g2.fillRect(90, 80, 450, 90);
 		
-		String thanosMessage = "You cannot enter the cave unless you have an ability! Go to the town and fight Bad Bunny";
+		String thanosMessage1 = "You cannot enter the cave unless you have an ability!";
+		String thanosMessage2 = "Go to the town and fight Lord Shaggy.";
 		String pressEMessage = "Press E to enter to other areas.";
 
 		g3.setFont(new Font("Times New Roman", Font.PLAIN, 20));
@@ -144,10 +147,12 @@ public class Player extends BaseDynamicEntity implements Fighter {
 
 		if(handler.getKeyManager().attbut  && this.CollisionWithEntity && !caveGuardianMoved) {
 
-			g3.drawString(thanosMessage, 100, 100);
+			g3.drawString(thanosMessage1, 100, 130);
+			g3.drawString(thanosMessage2, 100, 160);
+
 		}
 		else if (handler.getKeyManager().attbut  && this.CollisionWithEntity && caveGuardianMoved ) {
-			g3.drawString("Congratulations, You Can Enter the Cave!" , 100, 100);
+			g3.drawString("Congratulations, You Can Enter the Cave!" , 100, 130);
 		}
 		
 		

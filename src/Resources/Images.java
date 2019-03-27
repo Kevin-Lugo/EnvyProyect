@@ -96,6 +96,7 @@ public class Images {
 	public static Image ScaledArea;
 	public static BufferedImage tree;
 	public static BufferedImage Thanos;
+	public static BufferedImage[] ThanosL;
 	public static BufferedImage RedSkull;
 
 	public Images() {
@@ -107,6 +108,8 @@ public class Images {
 		Options = new BufferedImage[3];
 		Resume = new BufferedImage[2];
 		Quit = new BufferedImage[2];
+		ThanosL = new BufferedImage[1];
+
 		
 		map = new BufferedImage[1];
 		Scaledmap = new Image[1];
@@ -174,6 +177,7 @@ public class Images {
 			Stats = ImageIO.read(getClass().getResourceAsStream("/Sheets/Cartel Nota.png"));
 			QST = ImageIO.read(getClass().getResourceAsStream("/Sheets/QST.png")); //Things sometimes just dont fit
 			Thanos = ImageIO.read(getClass().getResourceAsStream("/Sheets/Thanos.png"));
+			ThanosL[0] = ImageIO.read(getClass().getResourceAsStream("/Sheets/Thanos.png"));
 			RedSkull = ImageIO.read(getClass().getResourceAsStream("/Sheets/RedSkull.png"));
 			
 

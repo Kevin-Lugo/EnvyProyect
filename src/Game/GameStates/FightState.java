@@ -88,8 +88,10 @@ public class FightState extends InWorldState{
 
         this.enemy.lvlAdjust();
         playerRect = new Rectangle( (int) handler.getWidth() / 5, entityY, 100, 100);
-        if(enemy.name.equals("Boss")) {
+        if(enemy.name.equals("Lord Shaggy")) {
         	enemyRect = new Rectangle((int) handler.getWidth() * 4/ 5 - 70,entityY -200, 300, 300);
+        } else if(enemy.name.equals("Thanos, the Betrayer")){
+        	enemyRect = new Rectangle((int) handler.getWidth() * 4/ 5 - 300,entityY -500, 600, 600);
         }else
         enemyRect = new Rectangle((int) handler.getWidth() * 4/ 5 - 70,entityY, 70, 70);
 
@@ -142,8 +144,8 @@ public class FightState extends InWorldState{
         else {
             if(!attacking&&!defense&&!skill&&turn>0&&enemy.getHealth()<=0&&!battleOver){
                 battleOver=true;
-                // Checking if the quest of killing the boss is completed
-                if (enemy.name.equals("Boss") && handler.getEntityManager().getPlayer().QuestAssigned) {
+                // Checking if the quest of killing the Lord Shaggy is completed
+                if (enemy.name.equals("Lord Shaggy") && handler.getEntityManager().getPlayer().QuestAssigned) {
                 	handler.getEntityManager().getPlayer().QuestFinished = true;
             	   
                }
