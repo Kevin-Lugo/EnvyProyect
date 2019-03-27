@@ -188,7 +188,7 @@ public class BaseNonHostileEntity extends BaseDynamicEntity {
 			Graphics2D g3 = (Graphics2D) g;
 			g3.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 			g3.setColor(Color.WHITE);
-			g3.drawString("Press E, To Interact" , 500, 100);
+			g3.drawString("Press and hold E to interact." , 100, 130);
 			
 			
 		}

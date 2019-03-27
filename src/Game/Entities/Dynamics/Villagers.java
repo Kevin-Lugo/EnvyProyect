@@ -18,7 +18,7 @@ public class Villagers extends BaseNonHostileEntity{
 	
     Rectangle villager;
     int width, height;
-    private String VillagerMessage = "Defeat Bad Bunny and save our town from danger.";  
+    private String VillagerMessage = "Defeat Lord Shaggy and save our town from danger.";  
     
     public Villagers(Handler handler, int xPosition, int yPosition, String state, String name, String area, BufferedImage[] animFrames) {
         super(handler, yPosition, yPosition,state,name,area,animFrames);
@@ -75,7 +75,7 @@ public class Villagers extends BaseNonHostileEntity{
 					g3.drawString("You have completed the quest!", 500, 150);
 
 				} else {
-					g3.drawString(this.VillagerMessage, 500, 150);
+					g3.drawString(this.VillagerMessage, 100, 160);
 				}
 
 			}
