@@ -1,5 +1,6 @@
 package Game.Entities.Dynamics;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -111,13 +112,34 @@ public class Player extends BaseDynamicEntity implements Fighter {
 	public void render(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
 		Graphics2D g3 = (Graphics2D) g;
+		
+		String healthText = "Health:";
+		String manaText = "Mana:";
 
-		Color bColor = Color.decode("#1A4E4E");
+		
+		Color bColor = new Color(51, 96, 178);
 		
 		g2.setColor(Color.LIGHT_GRAY);
 		g2.fillRect(82, 72, 465, 105);
 		g2.setColor(bColor);
 		g2.fillRect(90, 80, 450, 90);
+		
+		bColor = new Color(51, 96, 178);
+		
+		g2.setColor(Color.LIGHT_GRAY);
+		g2.fillRect((handler.getWidth()*7/8)-65, (handler.getHeight()*7/8)-25, 270, 105);
+		
+		g2.setColor(bColor);
+		g2.fillRect((handler.getWidth()*7/8)-60, (handler.getHeight()*7/8)-20, 260, 95);
+		
+        g2.setFont(new Font("Bank Gothic",3,15));
+        g2.setColor(Color.WHITE);
+		g2.drawString(healthText,(handler.getWidth()*7/8)-54,(handler.getHeight()*7/8)+14);
+		g2.drawString(manaText,(handler.getWidth()*7/8)-52,(handler.getHeight()*7/8)+51);
+		
+		
+		
+        
 		
 		String thanosMessage1 = "You cannot enter the cave unless you have an ability!";
 		String thanosMessage2 = "Go to the town and fight Lord Shaggy.";
@@ -152,8 +174,28 @@ public class Player extends BaseDynamicEntity implements Fighter {
 
 		}
 		else if (handler.getKeyManager().attbut  && this.CollisionWithEntity && caveGuardianMoved ) {
-			g3.drawString("Congratulations, You Can Enter the Cave!" , 100, 130);
+			g3.drawString("Congratulations, you can enter the cave!" , 100, 130);
 		}
+		
+		
+		Graphics2D g4 = (Graphics2D) g;
+		if(handler.getEntityManager().getPlayer().getHealth()>= handler.getEntityManager().getPlayer().getMaxHealth() * 3/4){
+            g4.setColor(Color.GREEN);
+        }else if(handler.getEntityManager().getPlayer().getHealth()>=handler.getEntityManager().getPlayer().getMaxHealth() * 1/2){
+            g4.setColor(Color.YELLOW);
+        }else{
+            g4.setColor(Color.RED);
+        }
+        g4.fillRect(handler.getWidth()*7/8, handler.getHeight()*7/8, (int)((handler.getWidth() * 2 / 20)*(handler.getEntityManager().getPlayer().getHealth()/handler.getEntityManager().getPlayer().getMaxHealth())), 17);
+        g4.setColor(Color.BLACK);
+        g4.drawRect(handler.getWidth()*7/8, handler.getHeight()*7/8, handler.getWidth() * 2 / 20, 17);
+        
+        int margin = 20;
+        
+        g4.setColor(Color.BLUE);
+        g4.fillRect(handler.getWidth()*7/8, (handler.getHeight()*7/8)+17+margin, (int)((handler.getWidth() * 2 / 20)*(handler.getEntityManager().getPlayer().getMana()/handler.getEntityManager().getPlayer().getMaxMana())), 17);
+        g4.setColor(Color.WHITE);
+        g4.drawRect(handler.getWidth()*7/8, (handler.getHeight()*7/8)+17+margin, handler.getWidth() * 2 / 20, 17);
 		
 		
 	}
