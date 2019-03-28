@@ -7,6 +7,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
+import Game.Entities.Dynamics.BaseNonHostileEntity;
 import Game.Entities.Statics.EntranceEntity;
 import Game.GameStates.InWorldState;
 import Game.GameStates.State;
@@ -15,6 +16,7 @@ import Game.World.WorldManager;
 import Game.World.InWorldAreas.CaveArea;
 import Game.World.InWorldAreas.TownArea;
 import Game.World.InWorldAreas.InWorldWalls;
+
 import Main.GameSetUp;
 import Main.Handler;
 import Resources.Animation;
@@ -84,8 +86,17 @@ public class Player extends BaseDynamicEntity implements Fighter {
 			UpdateNextMove();
 			PlayerInput();
 
-			if(	(this.xPosition>WorldManager.townDoor.x && this.xPosition<WorldManager.townDoor.x+WorldManager.townDoor.width && this.yPosition>WorldManager.townDoor.y && this.yPosition<WorldManager.townDoor.y+WorldManager.townDoor.height)
-					|| (this.xPosition>WorldManager.caveDoor.x && this.xPosition<WorldManager.caveDoor.x+WorldManager.caveDoor.width && this.yPosition>WorldManager.caveDoor.y && this.yPosition<WorldManager.caveDoor.y+WorldManager.caveDoor.height)) {
+			if(	(this.xPosition>WorldManager.townDoor.x && 
+					this.xPosition<WorldManager.townDoor.x+WorldManager.townDoor.width && 
+					this.yPosition>WorldManager.townDoor.y && 
+					this.yPosition<WorldManager.townDoor.y+WorldManager.townDoor.height) ||
+					 (this.xPosition>WorldManager.caveDoor.x &&
+							 this.xPosition<WorldManager.caveDoor.x+WorldManager.caveDoor.width && 
+							 this.yPosition>WorldManager.caveDoor.y && 
+							 this.yPosition<WorldManager.caveDoor.y+WorldManager.caveDoor.height) ||
+					 this.CollisionWithEntity) {
+				
+				
 				pleasePressE = true;
 			} else {
 				pleasePressE = false;
@@ -150,6 +161,7 @@ public class Player extends BaseDynamicEntity implements Fighter {
 		String thanosMessage1 = "You cannot enter the cave unless you have an ability!";
 		String thanosMessage2 = "Go to the town and fight Lord Shaggy.";
 		String pressEMessage = "Press E to enter to other areas.";
+		String pressEMessageInteract = "Press E to interact";
 
 		g3.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		g3.setColor(Color.WHITE);
@@ -163,16 +175,21 @@ public class Player extends BaseDynamicEntity implements Fighter {
 
 			g3.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 			g3.setColor(Color.WHITE);
-
+			if( this.CollisionWithEntity ) {
+				g3.drawString(pressEMessageInteract, 100, 100);
+			}
+			else
 			g3.drawString(pressEMessage, 100, 100); }
 
 		player = new Rectangle((int) xPosition, (int) yPosition+(currentHeight/2)+5, currentWidth-3, currentHeight/2);
-
+		
 		if (GameSetUp.DEBUGMODE) {
 			g2.draw(nextArea);
 			g2.draw(getCollision());
 		}
-
+		
+		
+			// Tells the player he most finish the quest
 		if(handler.getKeyManager().attbut  && this.CollisionWithEntity && !caveGuardianMoved) {
 
 			g3.drawString(thanosMessage1, 100, 130);
