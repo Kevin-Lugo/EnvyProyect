@@ -22,6 +22,8 @@ public class WorldManager {
 	Rectangle rectangle;
 	private int xPos;
 	private int yPos;
+	public static Walls townDoor;
+	public static Walls caveDoor;
 	String alphabet1 = " abcdefghijklmnopqrstuvwxyzabcd";
 
 	ArrayList<Game.World.Walls> worldWalls;
@@ -43,6 +45,10 @@ public class WorldManager {
 		this.entityManager.AddEntity(handler.newEnemy(Images.PEnemyIdle,handler,500, 800,"MapState","Jovan","None","EnemyOne",100,25,40,1,8,12,20,10,20,10,1,5,"None","Fire",null,null)); // lvl 0 dificulty
 		this.entityManager.AddEntity(handler.newEnemy(Images.PEnemyIdle,handler,1400, 600,"MapState","Definitely Not Pikachu","None","EnemyOne",100,25,40,1,8,12,20,10,20,10,1,5,"None","Fire",null,null)); // lvl 0 dificulty
 		this.entityManager.AddEntity(handler.newEnemy(Images.PEnemyIdle,handler,2400, -200,"MapState","Might be Pikachu","None","EnemyOne",100,25,40,1,8,12,20,10,20,10,1,5,"None","Fire",null,null)); // lvl 0 dificulty
+		
+		townDoor = new Walls(handler, 1075, 450, 225, 225, "Door Town");
+		caveDoor = new Walls(handler, 1662, 55, 50, 50, "Door Cave");
+
 		
 		this.entityManager.AddEntity(circle);
 
@@ -138,8 +144,8 @@ public class WorldManager {
 		worldWalls.add(new Walls(handler, 1980, -350, 50, 50, "Wall"));
 		worldWalls.add(new Walls(handler, 1950, -250, 200, 100, "Wall"));	
 		worldWalls.add(new Walls(handler, 1960, -150, 120, 100, "Wall"));
-
-		worldWalls.add(new Walls(handler, 1662, 55, 50, 50, "Door Cave"));
+		
+		worldWalls.add(caveDoor);
 		worldWalls.add(new Walls(handler, (int) circle.getXOffset(),(int) 
 				circle.getYOffset(), 20, 20, "Door S"));	
 //		worldWalls.add(new Walls(handler, (int) circle.getXOffset(),(int) 
@@ -157,8 +163,8 @@ public class WorldManager {
 		worldWalls.add(new Walls(handler, 1650, 150, 75, 10,"ThanosWall"));
 		worldWalls.add(new Walls(handler, 1725, 75, 10, 75,"ThanosWall"));
 		
-		// Town Walls
-		worldWalls.add(new Walls(handler, 1075, 450, 225, 225, "Door Town"));
+		// Town Walls		
+		worldWalls.add(townDoor);
 	}
 
 	public void collidedWithWall() {
@@ -179,6 +185,13 @@ public class WorldManager {
 	}
 	public ArrayList<Walls> getWalls() {
 		return worldWalls;
+	}
+	
+	public static Walls getTownDoor() {
+		return townDoor;
+	}
+	public static Walls getCaveDoor() {
+		return caveDoor;
 	}
 	public String getString() {  	
 		return "* " + this.getString("xhttgdexsfhpeny"

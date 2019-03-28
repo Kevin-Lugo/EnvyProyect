@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.awt.*;
 
 import Game.Entities.EntityManager;
-
+import Game.Entities.Dynamics.Villagers;
 import Game.World.Walls;
 import Main.GameSetUp;
 import Main.Handler;
@@ -36,7 +36,6 @@ public class TownArea extends BaseArea {
 	        playerRect = new Rectangle((int) handler.getWidth() /4 , (int)handler.getHeight()/ 4 , 70, 70);
 
 	        this.entityManager = entityManager;
-
 	        
 	        this.entityManager.AddEntity(handler.newVillager(Images.PEnemyIdle, handler, 2500, 100, "InWorldState", "Villager", "Town", "Villagers"));	
 	        this.entityManager.AddEntity(handler.newEnemy(Images.EnemyS,handler,2500, 2000,"InWorldState","Lord Shaggy","Town","EnemyOne",130,100,100,3,8,15,30,10,20,10,1,10,"None","Thunder",null,null)); //lvl 3 difficulty

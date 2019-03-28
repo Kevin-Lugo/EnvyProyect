@@ -11,6 +11,7 @@ import Game.Entities.Statics.EntranceEntity;
 import Game.GameStates.InWorldState;
 import Game.GameStates.State;
 import Game.World.Walls;
+import Game.World.WorldManager;
 import Game.World.InWorldAreas.CaveArea;
 import Game.World.InWorldAreas.TownArea;
 import Game.World.InWorldAreas.InWorldWalls;
@@ -28,7 +29,7 @@ public class Player extends BaseDynamicEntity implements Fighter {
 	public boolean QuestFinished = false; 
 	public boolean QuestAssigned = false;
 	public boolean caveGuardianMoved = false;
-	public boolean pleasePressE = true;
+	public boolean pleasePressE = false;
 
 	private boolean canMove;
 	public static boolean checkInWorld;
@@ -83,6 +84,12 @@ public class Player extends BaseDynamicEntity implements Fighter {
 			UpdateNextMove();
 			PlayerInput();
 
+			if(	(this.xPosition>WorldManager.townDoor.x && this.xPosition<WorldManager.townDoor.x+WorldManager.townDoor.width && this.yPosition>WorldManager.townDoor.y && this.yPosition<WorldManager.townDoor.y+WorldManager.townDoor.height)
+					|| (this.xPosition>WorldManager.caveDoor.x && this.xPosition<WorldManager.caveDoor.x+WorldManager.caveDoor.width && this.yPosition>WorldManager.caveDoor.y && this.yPosition<WorldManager.caveDoor.y+WorldManager.caveDoor.height)) {
+				pleasePressE = true;
+			} else {
+				pleasePressE = false;
+			}
 
 
 			if (GameSetUp.SWITCHING) {
@@ -119,19 +126,18 @@ public class Player extends BaseDynamicEntity implements Fighter {
 		
 		Color bColor = new Color(51, 96, 178);
 		
+		if(pleasePressE) {
 		g2.setColor(Color.LIGHT_GRAY);
 		g2.fillRect(82, 72, 465, 105);
 		g2.setColor(bColor);
 		g2.fillRect(90, 80, 450, 90);
+		}
 		
-		bColor = new Color(51, 96, 178);
-		
+		bColor = new Color(51, 96, 178);	
 		g2.setColor(Color.LIGHT_GRAY);
 		g2.fillRect((handler.getWidth()*7/8)-65, (handler.getHeight()*7/8)-25, 270, 105);
-		
 		g2.setColor(bColor);
 		g2.fillRect((handler.getWidth()*7/8)-60, (handler.getHeight()*7/8)-20, 260, 95);
-		
         g2.setFont(new Font("Bank Gothic",3,15));
         g2.setColor(Color.WHITE);
 		g2.drawString(healthText,(handler.getWidth()*7/8)-54,(handler.getHeight()*7/8)+14);
