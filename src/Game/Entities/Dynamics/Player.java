@@ -101,6 +101,18 @@ public class Player extends BaseDynamicEntity implements Fighter {
 			} else {
 				pleasePressE = false;
 			}
+			
+			//THANOS CONDITION
+			//Need to change handler.getEntityManager() to the x and y positions of Thanos' Rectangle.
+//			if(	(TownArea.isInTown &&
+//					this.xPosition>handler.getEntityManager() && 
+//					this.xPosition<handler.getEntityManager()+ Villagers.villagerS.width && 
+//					this.yPosition>handler.getEntityManager() && 
+//					this.yPosition<handler.getEntityManager()+ Villagers.villagerS.height)) {
+//				pleasePressE = true;
+//			} else {
+//				pleasePressE = false;
+//			}
 
 
 			if (GameSetUp.SWITCHING) {

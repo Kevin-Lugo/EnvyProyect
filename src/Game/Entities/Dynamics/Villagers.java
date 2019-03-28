@@ -16,7 +16,7 @@ import Resources.Images;
 public class Villagers extends BaseNonHostileEntity{ 
 	
 	
-    Rectangle villager;
+	public Rectangle villager;public static Rectangle villagerS;
     int width, height;
     private String VillagerMessage = "Defeat Lord Shaggy and save our town from danger.";  
     
@@ -31,11 +31,14 @@ public class Villagers extends BaseNonHostileEntity{
 
         this.foundState = state;
         villager = new Rectangle();
+        villagerS = new Rectangle();
     }
     
     @Override
     public void tick() {
 
+    	villagerS = villager;
+    	
         if(!Player.isinArea)super.tick();
        
         if (handler.getEntityManager().getPlayer().QuestFinished && super.getBeingTalkedTo()) {
@@ -87,9 +90,8 @@ public class Villagers extends BaseNonHostileEntity{
     public Rectangle getCollision() {
         return villager;
     }
-   
-    
-    
-	
+    public static Rectangle getCollisionS() {
+        return villagerS;
+    }
 
 }
