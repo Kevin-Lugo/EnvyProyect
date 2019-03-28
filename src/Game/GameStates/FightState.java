@@ -72,10 +72,19 @@ public class FightState extends InWorldState{
         entityInfoX[0] = handler.getWidth() * 3/20;
         //enemy info square coordinate
         entityInfoX[1] = handler.getWidth() * 14/20 + 4;
-        
+        if( enemy.name.equals("Lord Shaggy")) {
+        	
+        	 handler.getGame().getMusicHandler().set_changeMusic("res/music/ScoobySong.mp3");
+             handler.getGame().getMusicHandler().play();
+             handler.getGame().getMusicHandler().setVolume(0.2);
+        		
+        }
+        else
+        {
         handler.getGame().getMusicHandler().set_changeMusic("res/music/BattleMusic.mp3");
         handler.getGame().getMusicHandler().play();
         handler.getGame().getMusicHandler().setVolume(0.2);
+        }
 
         inStateEnemy=enemy;
         
@@ -275,7 +284,7 @@ public class FightState extends InWorldState{
                         handler.setXInWorldDisplacement(-1950);
                         handler.setYInWorldDisplacement(-1000);
                         
-                        handler.getGame().getMusicHandler().set_changeMusic("res/music/Cave.mp3");
+                        handler.getGame().getMusicHandler().set_changeMusic("res/music/Forge.mp3");
                         handler.getGame().getMusicHandler().play();
                         handler.getGame().getMusicHandler().setVolume(0.4);
                         State.setState(handler.getGame().inWorldState); 

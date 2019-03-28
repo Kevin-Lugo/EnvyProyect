@@ -364,11 +364,9 @@ public class Player extends BaseDynamicEntity implements Fighter {
 								State.setState(handler.getGame().inWorldState.setArea(InWorldState.caveArea));
 							}
 						} 
-						if(w.getType().equals("Door Town")) {
+						if (w.getType().equals("Door Town")) {
 
-
-
-							if(handler.getKeyManager().attbut) {
+							if (handler.getKeyManager().attbut) {
 								checkInWorld = true;
 								InWorldState.townArea.oldPlayerXCoord = (int) (handler.getXDisplacement());
 								InWorldState.townArea.oldPlayerYCoord = (int) (handler.getYDisplacement());
@@ -378,13 +376,14 @@ public class Player extends BaseDynamicEntity implements Fighter {
 								handler.setYInWorldDisplacement(TownArea.playerYSpawn);
 								GameSetUp.LOADING = true;
 								handler.setArea("Town");
-								//								
-								//			                        handler.getGame().getMusicHandler().set_changeMusic("res/music/Cave.mp3");
-								//			                        handler.getGame().getMusicHandler().play();
-								//			                        handler.getGame().getMusicHandler().setVolume(0.4);
+
+								handler.getGame().getMusicHandler().set_changeMusic("res/music/TheAvengers.mp3");
+								handler.getGame().getMusicHandler().play();
+								handler.getGame().getMusicHandler().setVolume(0.4);
+								
 								State.setState(handler.getGame().inWorldState.setArea(InWorldState.townArea));
 							}
-							//							
+							//
 
 						}
 
