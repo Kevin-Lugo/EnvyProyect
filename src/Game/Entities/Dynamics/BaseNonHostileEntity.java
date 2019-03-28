@@ -169,8 +169,8 @@ public class BaseNonHostileEntity extends BaseDynamicEntity {
 
 		detector = this.getCollision();
 
-		detector.setRect(detector.getX() - detector.getWidth() * 2, detector.getY() - detector.getHeight() * 2,
-				detector.getWidth()*5 , detector.getHeight()*5 );
+		detector.setRect(detector.getX() + 300 - detector.getWidth() * 2, detector.getY() + 300 - detector.getHeight() * 2,
+				detector.getWidth()*2 , detector.getHeight()*2 );
 
 		this.PlayerDetected = handler.getEntityManager().getPlayer().getCollision().intersects(detector);
 
@@ -186,6 +186,13 @@ public class BaseNonHostileEntity extends BaseDynamicEntity {
 	public void render(Graphics g) {
 		if (this.PlayerDetected) {
 			Graphics2D g3 = (Graphics2D) g;
+			Color bColor = new Color(51, 96, 178);
+			g3.setColor(Color.LIGHT_GRAY);
+			g3.fillRect(82, 72, 465, 105);
+			g3.setColor(bColor);
+			g3.fillRect(90, 80, 450, 90);
+			
+		///////////////////////////////////////////////////////////
 			g3.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 			g3.setColor(Color.WHITE);
 			g3.drawString("Press and hold E to interact." , 100, 130);

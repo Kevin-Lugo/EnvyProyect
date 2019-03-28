@@ -55,6 +55,7 @@ public class Villagers extends BaseNonHostileEntity{
 
 		Graphics2D g2 = (Graphics2D) g;
 		Graphics2D g3 = (Graphics2D) g;
+		
 
 		if (handler.getArea().equals(this.Area)) {
 			if (!Player.checkInWorld) {

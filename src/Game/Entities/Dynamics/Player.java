@@ -85,8 +85,9 @@ public class Player extends BaseDynamicEntity implements Fighter {
 
 			UpdateNextMove();
 			PlayerInput();
+			
 
-			if(	(this.xPosition>WorldManager.townDoor.x && 
+			if(	!checkInWorld  && ((this.xPosition>WorldManager.townDoor.x && 
 					this.xPosition<WorldManager.townDoor.x+WorldManager.townDoor.width && 
 					this.yPosition>WorldManager.townDoor.y && 
 					this.yPosition<WorldManager.townDoor.y+WorldManager.townDoor.height) ||
@@ -94,25 +95,14 @@ public class Player extends BaseDynamicEntity implements Fighter {
 							 this.xPosition<WorldManager.caveDoor.x+WorldManager.caveDoor.width && 
 							 this.yPosition>WorldManager.caveDoor.y && 
 							 this.yPosition<WorldManager.caveDoor.y+WorldManager.caveDoor.height) ||
-					 this.CollisionWithEntity) {
+					 this.CollisionWithEntity )) {
 				
 				
 				pleasePressE = true;
-			} else {
-				pleasePressE = false;
 			}
+			else
+				pleasePressE = false;
 			
-			//THANOS CONDITION
-			//Need to change handler.getEntityManager() to the x and y positions of Thanos' Rectangle.
-//			if(	(TownArea.isInTown &&
-//					this.xPosition>handler.getEntityManager() && 
-//					this.xPosition<handler.getEntityManager()+ Villagers.villagerS.width && 
-//					this.yPosition>handler.getEntityManager() && 
-//					this.yPosition<handler.getEntityManager()+ Villagers.villagerS.height)) {
-//				pleasePressE = true;
-//			} else {
-//				pleasePressE = false;
-//			}
 
 
 			if (GameSetUp.SWITCHING) {
@@ -286,7 +276,7 @@ public class Player extends BaseDynamicEntity implements Fighter {
 		}
 
 		CheckForWalls();
-		//worldWalls.add(new Walls(handler, 1662, 55, 50, 50, "Door Cave"));
+		
 
 
 		if (handler.getKeyManager().down & canMove) {
@@ -334,7 +324,7 @@ public class Player extends BaseDynamicEntity implements Fighter {
 				if (nextArea.intersects(w)) {
 					///////////////////////////////////////////////////////////////////////////////////////////////
 					//		 Makes it so that the player can or cannot enter to the cave
-					if (w.getType().equals("ThanosWall")) {
+					if (w.getType().equals("CaveGuardian")) {
 						this.CollisionWithEntity = true;
 
 						if (!handler.getEntityManager().getPlayer().getSkill().contentEquals("none")
@@ -342,8 +332,7 @@ public class Player extends BaseDynamicEntity implements Fighter {
 						}
 						else 
 							PushPlayerBack();
-					} 
-					if (!w.getType().equals("ThanosWall")) 
+					} else
 						this.CollisionWithEntity = false;
 					////////////////////////////////////////////////////////////////////////////////////////////////////
 

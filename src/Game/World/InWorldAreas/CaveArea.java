@@ -36,7 +36,7 @@ public class CaveArea extends BaseArea {
 
         
 
-        this.entityManager.AddEntity(handler.newEnemy(Images.ThanosL,handler,700, 2000,"InWorldState","Thanos, the Betrayer","Cave","EnemyOne",999999979,25,80,1,1000,12,2000,10,20,10,1,10,"None","Thunder",null,null)); //lvl 2 difficulty
+        this.entityManager.AddEntity(handler.newEnemy(Images.ThanosL,handler,700, 2000,"InWorldState","Thanos, the Betrayer","Cave","EnemyOne",500,25,80,1,50,12,80,10,20,10,1,10,"None","Thunder",null,null)); //lvl 100 difficulty
         this.entityManager.AddEntity(handler.newEnemy(Images.PEnemyIdle,handler,3000, 1000,"InWorldState","Cave Dweller","Cave","EnemyOne",100,25,60,10,1,12,20,10,20,13,1,10,"None","Thunder",null,null)); // lvl 1 difficulty
 
         this.entityManager.AddEntity(new LightStatue (handler, 2080, 1770));
